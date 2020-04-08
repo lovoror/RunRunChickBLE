@@ -1580,7 +1580,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 793540172}
         m_MethodName: ScanAndConnect
         m_Mode: 1
         m_Arguments:
