@@ -14,4 +14,5 @@ public class GlobalValue
     public static string ServiceUUID = "";
     public static string TransforUUID = "";
     public static string _deviceAddress = "";
+
 }
