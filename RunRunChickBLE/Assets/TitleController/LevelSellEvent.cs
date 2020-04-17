@@ -59,36 +59,36 @@ public class LevelSellEvent : MonoBehaviour
         
     }
 
-    public void ChangeLevelButtonEvent(int Level)
+    public void ChangeMapButtonEvent(int Map)
     {
         VolcanicBtn     .GetComponent<Button>().enabled = false;
         IceFieldBtn     .GetComponent<Button>().enabled = false;
         DesertBtn       .GetComponent<Button>().enabled = false;
         NightBtn        .GetComponent<Button>().enabled = false;
-        switch (Level)
+        switch (Map)
         {
             case 0:
-                GlobalValue.Level = Level;
+                GlobalValue.Map = Map;
                 StartCoroutine(SetTimeFalseActive());
                 print("更換了白天森林");
                 break;
             case 1:
-                GlobalValue.Level = Level;
+                GlobalValue.Map = Map;
                 StartCoroutine(SetTimeFalseActive());
                 print("更換了火山");
                 break;
             case 2:
-                GlobalValue.Level = Level;
+                GlobalValue.Map = Map;
                 StartCoroutine(SetTimeFalseActive());
                 print("更換了冰原");
                 break;
             case 3:
-                GlobalValue.Level = Level;
+                GlobalValue.Map = Map;
                 StartCoroutine(SetTimeFalseActive());
                 print("更換了沙漠");
                 break;
             case 4:
-                GlobalValue.Level = Level;
+                GlobalValue.Map = Map;
                 StartCoroutine(SetTimeFalseActive());
                 print("更換了晚上森林");
                 break;
@@ -103,7 +103,7 @@ public class LevelSellEvent : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         this.GetComponent<Animation>().clip = ShowOut;
         this.gameObject.SetActive(false);
-        if ((GlobalValue.Level == 1) || ((GlobalValue.Level == 2)) || (GlobalValue.Level == 3))
+        if ((GlobalValue.Map == 1) || ((GlobalValue.Map == 2)) || (GlobalValue.Map == 3))
         {
 
             DayBtn.SetActive(false);//按鈕切換晚上鍵
@@ -118,7 +118,7 @@ public class LevelSellEvent : MonoBehaviour
             DoorObj.SetActive(false);//門消失
             DoorEffectObj.SetActive(true);//開啟傳送門效果
         }
-        else if (GlobalValue.Level == 0)
+        else if (GlobalValue.Map == 0)
         {
 
             DayBtn.SetActive(false);//按鈕切換晚上鍵
@@ -133,7 +133,7 @@ public class LevelSellEvent : MonoBehaviour
             DoorObj.SetActive(true);//門開啟
             DoorEffectObj.SetActive(false);//傳送門效果關閉
         }
-        else if (GlobalValue.Level == 4)
+        else if (GlobalValue.Map == 4)
         {
             DayBtn.SetActive(true);//按鈕切換白天鍵
             NightBtn.SetActive(false);

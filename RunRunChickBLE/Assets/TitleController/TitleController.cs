@@ -24,21 +24,10 @@ public class TitleController : MonoBehaviour
     [Header("金幣顯示物件")]
     public GameObject CoinObj;
 
-    [Header("空白的山羊按鈕")]
-    public GameObject GoatBtn;
 
     [Header("門物件")]
     public GameObject LevelChangeEventObj;//當門關掉時就必須開啟動畫
 
-    [Header("確認選單-更換角色模組")]
-    public GameObject SellFalseTurePanelObj;
-    [Header("確認腳色模組選單的是否按鈕")]
-    public GameObject SellTrueBtn, SellFalseBtn;
-
-    [Header("確認選單-更換場景模組")]
-    public GameObject LevelFalseTurePanelObj;
-    [Header("確認場景選單的是否按鈕")]
-    public GameObject LevelSellTrueBtn, LevelSellFalseBtn;
     // Start is called before the first frame update
     void Awake()
     {
@@ -85,15 +74,6 @@ public class TitleController : MonoBehaviour
 
         CoinObj                     = GameObject.Find("CoinPanelObj");
 
-        LevelFalseTurePanelObj      = GameObject.Find("LevelFalseTurePanelObj");
-        LevelSellTrueBtn            = GameObject.Find("LevelTrueButton");
-        LevelSellFalseBtn           = GameObject.Find("LevelFalseButton");
-
-        SellFalseTurePanelObj       = GameObject.Find("SellFalseTurePanelObj");
-        SellTrueBtn                 = GameObject.Find("SellTrueButton");
-        SellFalseBtn                = GameObject.Find("SellFalseButton");
-        GoatBtn                     = GameObject.Find("GoatSellBtn");
-
         LevelChangeEventObj         = GameObject.Find("LevelChangeEvent");
         
 
@@ -101,9 +81,6 @@ public class TitleController : MonoBehaviour
         //ParentCanvasObj             .SetActive(false);
         //PlayerCanvasObj             .SetActive(false);
         //ChaserCanvasObj             .SetActive(false);
-        LevelFalseTurePanelObj      .SetActive(false);
-        SellFalseTurePanelObj       .SetActive(false);
-        GoatBtn                     .SetActive(false);
         //CoinObj                     .SetActive(false);
 
     }
@@ -114,26 +91,6 @@ public class TitleController : MonoBehaviour
         print("開始遊戲");
 
     }
-
-    /*▼▼▼▼▼購買選單事件▼▼▼▼▼*/
-
-    public void SelectSellEvent()
-    {
-        print("開啟購買角色選單");
-        SellFalseTurePanelObj.SetActive(true);
-    }
-    public void SelectSellTrue()
-    {
-        ParentCanvasObj.SetActive(true);
-        //PlayerCanvasObj.SetActive(true);
-        ChaserCanvasObj.SetActive(true);
-        SellFalseTurePanelObj.SetActive(false);
-    }
-    public void SelectSellFalse()
-    {
-        SellFalseTurePanelObj.SetActive(false);
-    }
-
 
     /*▼▼▼▼▼購買角色選單事件▼▼▼▼▼*/
 
@@ -288,20 +245,8 @@ public class TitleController : MonoBehaviour
         LevelChangeEventObj.GetComponent<LevelSellEvent>().DesertBtn    .GetComponent<Button>().enabled = true;
         LevelChangeEventObj.GetComponent<LevelSellEvent>().NightBtn     .GetComponent<Button>().enabled = true;
         LevelChangeEventObj.GetComponent<LevelSellEvent>().DayBtn       .GetComponent<Button>().enabled = true;
-        //LevelFalseTurePanelObj.SetActive(true);
     }
-    public void SelectLevelTrue()
-    {
-        LevelFalseTurePanelObj.SetActive(false);
-    }
-    public void SelectLevelFalse()
-    {
-        LevelFalseTurePanelObj.SetActive(false);
-    }
-    public void SelectLevelChange()
-    {
-        LevelFalseTurePanelObj.SetActive(false);
-    }
+
     /*▲▲▲▲▲關卡選單事件▲▲▲▲▲*/
 
 
