@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/FrostwindMaze.unity
+- path: Assets/Scenes/FrostwindMazeJumpPlay.unity
   isLoaded: 1
   isActive: 1
