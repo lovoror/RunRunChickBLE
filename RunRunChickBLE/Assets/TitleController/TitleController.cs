@@ -1,10 +1,14 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class TitleController : MonoBehaviour
 {
+    ChickSaleStatus _ChickSaleStatus;
+
     [Header("控件參數取用代理名稱")]
     public TitleController instance;
 
@@ -27,6 +31,7 @@ public class TitleController : MonoBehaviour
 
     [Header("門物件")]
     public GameObject LevelChangeEventObj;//當門關掉時就必須開啟動畫
+    public GameObject DoorAnimEvent;
 
     // Start is called before the first frame update
     void Awake()
@@ -75,9 +80,9 @@ public class TitleController : MonoBehaviour
         CoinObj                     = GameObject.Find("CoinPanelObj");
 
         LevelChangeEventObj         = GameObject.Find("LevelChangeEvent");
-        
+        DoorAnimEvent               = GameObject.Find("DoorEvent");
 
-
+        GetJsonData();
         //ParentCanvasObj             .SetActive(false);
         //PlayerCanvasObj             .SetActive(false);
         //ChaserCanvasObj             .SetActive(false);
@@ -85,6 +90,60 @@ public class TitleController : MonoBehaviour
 
     }
 
+    void Start()
+    {
+        if (_ChickSaleStatus.GameLevel == 0)
+        {
+            for (int i = 1; i < 11; i++)
+            {
+                if (i < 8)
+                {
+                    ParentObjList[i].GetComponent<Animator>().SetBool("Run", true);
+                    PlayerObjList[i].GetComponent<Animator>().SetBool("Run", true);
+                    ParentObjList[i].SetActive(false);
+                    PlayerObjList[i].SetActive(false);
+                }
+                ChaserObjList[i].GetComponent<Animator>().SetBool("Run", true);
+                ChaserObjList[i].SetActive(false);
+            }
+            ParentObjList[1].SetActive(true);
+            PlayerObjList[1].SetActive(true);
+            ChaserObjList[1].SetActive(true);
+            ParentObjList[1].GetComponent<Animator>().SetBool("Run", true);
+            PlayerObjList[1].GetComponent<Animator>().SetBool("Run", true);
+            ChaserObjList[1].GetComponent<Animator>().SetBool("Run", true);
+
+            //禁用選角色功能
+            ParentCanvasObj.SetActive(false);
+            PlayerCanvasObj.SetActive(false);
+            ChaserCanvasObj.SetActive(false);
+            //禁用選關卡功能
+            DoorAnimEvent.GetComponent<Animation>().enabled = false;
+        }
+        else if (_ChickSaleStatus.GameLevel == 1)
+        {
+            for (int i = 1; i < 11; i++)
+            {
+                if (i < 8)
+                {
+                    ParentObjList[i].GetComponent<Animator>().SetBool("Run", true);
+                    PlayerObjList[i].GetComponent<Animator>().SetBool("Run", true);
+                    ParentObjList[i].SetActive(false);
+                    PlayerObjList[i].SetActive(false);
+                }
+                ChaserObjList[i].GetComponent<Animator>().SetBool("Run", true);
+                ChaserObjList[i].SetActive(false);
+            }
+            ParentObjList[1].SetActive(true);
+            PlayerObjList[1].SetActive(true);
+            ChaserObjList[1].SetActive(true);
+            ParentObjList[1].GetComponent<Animator>().SetBool("Run", true);
+            PlayerObjList[1].GetComponent<Animator>().SetBool("Run", true);
+            ChaserObjList[1].GetComponent<Animator>().SetBool("Run", true);
+            //開啟選關卡功能
+            DoorAnimEvent.GetComponent<Animation>().enabled = true;
+        }
+    }
     public void StartGameEvent()
     {
 
@@ -238,13 +297,17 @@ public class TitleController : MonoBehaviour
 
     public void SelectLevelEvent()
     {
-        print("開啟購買關卡選單");
-        LevelChangeEventObj.SetActive(true);
-        LevelChangeEventObj.GetComponent<LevelSellEvent>().VolcanicBtn  .GetComponent<Button>().enabled = true;
-        LevelChangeEventObj.GetComponent<LevelSellEvent>().IceFieldBtn  .GetComponent<Button>().enabled = true;
-        LevelChangeEventObj.GetComponent<LevelSellEvent>().DesertBtn    .GetComponent<Button>().enabled = true;
-        LevelChangeEventObj.GetComponent<LevelSellEvent>().NightBtn     .GetComponent<Button>().enabled = true;
-        LevelChangeEventObj.GetComponent<LevelSellEvent>().DayBtn       .GetComponent<Button>().enabled = true;
+        if (_ChickSaleStatus.GameLevel > 2)
+        {
+            print("開啟購買關卡選單");
+            LevelChangeEventObj.SetActive(true);
+            LevelChangeEventObj.GetComponent<LevelSellEvent>().VolcanicBtn.GetComponent<Button>().enabled = true;
+            LevelChangeEventObj.GetComponent<LevelSellEvent>().IceFieldBtn.GetComponent<Button>().enabled = true;
+            LevelChangeEventObj.GetComponent<LevelSellEvent>().DesertBtn.GetComponent<Button>().enabled = true;
+            LevelChangeEventObj.GetComponent<LevelSellEvent>().NightBtn.GetComponent<Button>().enabled = true;
+            LevelChangeEventObj.GetComponent<LevelSellEvent>().DayBtn.GetComponent<Button>().enabled = true;
+        }
+
     }
 
     /*▲▲▲▲▲關卡選單事件▲▲▲▲▲*/
@@ -268,44 +331,57 @@ public class TitleController : MonoBehaviour
         }
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        for (int i = 1; i < 5; i++)
-        {
-            ParentObjList[i].GetComponent<Animator>().SetBool("Run", true);
-            PlayerObjList[i].GetComponent<Animator>().SetBool("Run", true);
-            ChaserObjList[i].GetComponent<Animator>().SetBool("Run", true);
-        }
-        ParentObjList[2].SetActive(false);
-        ParentObjList[3].SetActive(false);
-        ParentObjList[4].SetActive(false);
-        ParentObjList[5].SetActive(false);
-        ParentObjList[6].SetActive(false);
-        ParentObjList[7].SetActive(false);
+    //儲存數據事件
+     public void GetJsonData()
+     {
+         string Json = "";
+         //JSON字串
+         Json = Resources.Load<TextAsset>("ChickData").text;
+         _ChickSaleStatus = Newtonsoft.Json.JsonConvert.DeserializeObject<ChickSaleStatus>(Json);
+         GlobalValue.MyCoin = _ChickSaleStatus.Coin;
+         print("目前金幣數為:" + _ChickSaleStatus.Coin);
+         print("目前進程:" + _ChickSaleStatus.GameLevel);
+     }
+     public void SetJsonData()
+     {
+         try
+         {
+             if (_ChickSaleStatus != null)
+             {
+                 _ChickSaleStatus.Coin = GlobalValue.MyCoin;
+                 string NewData = Newtonsoft.Json.JsonConvert.SerializeObject(_ChickSaleStatus);
+                 string NewDataPath = Application.dataPath + @"/Resources/ChickData.json";
+                 FileInfo file = new FileInfo(NewDataPath);
+                 StreamWriter sw = file.CreateText();
+                 sw.WriteLine(NewData);
+                 sw.Close();
+                 sw.Dispose();
 
-        PlayerObjList[2].SetActive(false);
-        PlayerObjList[3].SetActive(false);
-        PlayerObjList[4].SetActive(false);
-        PlayerObjList[5].SetActive(false);
-        PlayerObjList[6].SetActive(false);
-        PlayerObjList[7].SetActive(false);
+ #if UNITY_EDITOR
+                 UnityEditor.AssetDatabase.Refresh();
+ #endif
+                 print("輸出成功,金幣數累計至:" + GlobalValue.MyCoin);
 
-        ChaserObjList[2].SetActive(false);
-        ChaserObjList[3].SetActive(false);
-        ChaserObjList[4].SetActive(false);
-        ChaserObjList[5].SetActive(false);
-        ChaserObjList[6].SetActive(false);
-        ChaserObjList[7].SetActive(false);
-        ChaserObjList[8].SetActive(false);
-        ChaserObjList[9].SetActive(false);
-        ChaserObjList[10].SetActive(false);
+             }
+         }
+         catch
+         {
+             //print("jsonApi not work!");
+         }
 
-    }
+     }
+     //儲存數據事件
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+}
+
+[Serializable]
+public class ChickSaleStatus
+{
+    [SerializeField]
+    public int Coin;
+    public int GameLevel;//關卡進程
+    public int[] SalePlayerList { get; set; }
+    public int[] SaleParentList { get; set; }
+    public int[] SaleChasertList { get; set; }
+    public int[] SaleMapList { get; set; }
 }

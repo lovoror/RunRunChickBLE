@@ -2107,9 +2107,9 @@ MonoBehaviour:
   _space: 0
   _sampleMode: 0
   subscribers:
-  - {fileID: 1664922332}
-  - {fileID: 487890648}
   - {fileID: 412223677}
+  - {fileID: 487890648}
+  - {fileID: 1664922332}
   nodes: []
 --- !u!4 &465740658
 Transform:
@@ -2988,6 +2988,7 @@ MonoBehaviour:
   ChaserCanvasObj: {fileID: 0}
   CoinObj: {fileID: 0}
   LevelChangeEventObj: {fileID: 0}
+  DoorAnimEvent: {fileID: 0}
 --- !u!4 &656562682
 Transform:
   m_ObjectHideFlags: 0

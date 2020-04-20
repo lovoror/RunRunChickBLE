@@ -1,0 +1,8 @@
+{
+    "Coin": 25,
+    "GameLevel": 0,
+    "SalePlayerList": [ 1, 0, 0, 0, 0, 0, 0 ],
+    "SaleParentList": [ 1, 0, 0, 0, 0, 0, 0 ],
+    "SaleChasertList": [ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0 ],
+    "SaleMapList": [ 0, 0, 0, 1 ]
+}
