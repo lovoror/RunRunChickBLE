@@ -1,0 +1,74 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2335292986177802491
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2335292986177802490}
+  - component: {fileID: 2335292986177802493}
+  m_Layer: 0
+  m_Name: GameController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2335292986177802490
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2335292986177802491}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 130.69714, y: 5.6403427, z: 139.24992}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2335292986177802493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2335292986177802491}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9b8cf40acb3b7b46a1cb8cd69e35e44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ParentObjList: []
+  ParentCanvasObj: {fileID: 0}
+  PlayerObjList: []
+  PlayerCanvasObj: {fileID: 0}
+  ChaserObjList: []
+  ChaserCanvasObj: {fileID: 0}
+  SpeedObj: {fileID: 0}
+  SpeedValueTextObj: {fileID: 0}
+  CaloriObj: {fileID: 0}
+  CaloriValueTextObj: {fileID: 0}
+  CoinValueTextObj: {fileID: 0}
+  CenterTextObj: {fileID: 0}
+  ExitButtonObj: {fileID: 0}
+  ResultPanelObj: {fileID: 0}
+  FadePanelObj: {fileID: 0}
+  ParentAnimator: {fileID: 0}
+  RunnerAnimator: {fileID: 0}
+  ChaserAnimator: {fileID: 0}
+  ChickenSFX: {fileID: 0}
+  _IsportTimeController: {fileID: 0}
+  _AudioClipManagers: {fileID: 0}
+  CoinCount: 0
+  FastMissing: 0
+  SlowMissing: 0
+  Rpm: 50
+  FollowSpeed: 0
+  SetRpm: 0
+  DebugFlag: 1
+  Chick: []

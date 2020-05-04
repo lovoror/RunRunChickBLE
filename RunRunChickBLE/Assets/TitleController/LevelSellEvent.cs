@@ -23,25 +23,29 @@ public class LevelSellEvent : MonoBehaviour
     [Header("螢火蟲與棉絮物件")]
     public GameObject FirefliesObj;
     public GameObject PollenObj;
+    [Header("開始遊戲按鈕物件")]
+    public GameObject StartGameBtn_Go, StartGameBtn_Goback;
 
     void Awake()
     {
         if (instance == null) { instance = this; }
         
-        VolcanicBtn     = GameObject.Find("volcanicBtn");
-        IceFieldBtn     = GameObject.Find("IceFieldBtn");
-        DesertBtn       = GameObject.Find("desertBtn");
-        NightBtn        = GameObject.Find("nightBtn");
-        DayBtn          = GameObject.Find("DayBtn");
+        VolcanicBtn         = GameObject.Find("volcanicBtn");
+        IceFieldBtn         = GameObject.Find("IceFieldBtn");
+        DesertBtn           = GameObject.Find("desertBtn");
+        NightBtn            = GameObject.Find("nightBtn");
+        DayBtn              = GameObject.Find("DayBtn");
 
-        DoorObj         = GameObject.Find("doorobj");
-        DoorEffectObj   = GameObject.Find("magic_ring_04");
+        DoorObj             = GameObject.Find("doorobj");
+        DoorEffectObj       = GameObject.Find("magic_ring_04");
 
-        DayLight        = GameObject.Find("DayDirectionalLight");
-        NightLight      = GameObject.Find("NightDirectionalLight");
+        DayLight            = GameObject.Find("DayDirectionalLight");
+        NightLight          = GameObject.Find("NightDirectionalLight");
 
-        FirefliesObj    = GameObject.Find("Fireflies");
-        PollenObj       = GameObject.Find("pollenparticle");
+        FirefliesObj        = GameObject.Find("Fireflies");
+        PollenObj           = GameObject.Find("pollenparticle");
+        StartGameBtn_Go     = GameObject.Find("GoIcon");
+        StartGameBtn_Goback = GameObject.Find("GoBackIcon");
 
     }
 
@@ -70,26 +74,36 @@ public class LevelSellEvent : MonoBehaviour
             case 0:
                 GlobalValue.Map = Map;
                 StartCoroutine(SetTimeFalseActive());
+                StartGameBtn_Go.SetActive(true);
+                StartGameBtn_Goback.SetActive(false);
                 print("更換了白天森林");
                 break;
             case 1:
                 GlobalValue.Map = Map;
                 StartCoroutine(SetTimeFalseActive());
+                StartGameBtn_Go.SetActive(false);
+                StartGameBtn_Goback.SetActive(true);
                 print("更換了火山");
                 break;
             case 2:
                 GlobalValue.Map = Map;
                 StartCoroutine(SetTimeFalseActive());
+                StartGameBtn_Go.SetActive(false);
+                StartGameBtn_Goback.SetActive(true);
                 print("更換了冰原");
                 break;
             case 3:
                 GlobalValue.Map = Map;
                 StartCoroutine(SetTimeFalseActive());
+                StartGameBtn_Go.SetActive(false);
+                StartGameBtn_Goback.SetActive(true);
                 print("更換了沙漠");
                 break;
             case 4:
                 GlobalValue.Map = Map;
                 StartCoroutine(SetTimeFalseActive());
+                StartGameBtn_Go.SetActive(true);
+                StartGameBtn_Goback.SetActive(false);
                 print("更換了晚上森林");
                 break;
 

@@ -12,6 +12,7 @@ public class IsportTimeController : MonoBehaviour
     int Mins, Secs;//分鐘, 秒數, 微秒數
     string MinsText, SecsText;//數字補0
     public IsportGameController _IsportGameController;
+    public Collider _PlayerTriggerEventTheCollider;
     public GameObject SetResultController;
     // Start is called before the first frame update
     void Start()
@@ -73,8 +74,8 @@ public class IsportTimeController : MonoBehaviour
 
     public void RunGameOver()
     {
-
         SetResultController.SetActive(true);
+        _PlayerTriggerEventTheCollider.enabled=false;
         StartCoroutine(_IsportGameController.SetGameOver());
     }
 

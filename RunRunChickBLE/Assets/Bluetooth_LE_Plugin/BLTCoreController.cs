@@ -424,6 +424,7 @@ public class BLTCoreController : MonoBehaviour
     public IEnumerator LoadingAnimation_RemoveBallGameTitle()
     {
         DontDestroyOnLoad(this.gameObject);
+
         /*byte Resistance_byte = Convert.ToByte(GlobalValue.Resistance * 10);
         byte[] start = { 0x55, 0xA4, 0x01, 0x01, 0x00, 0x90 };
         SendBytes(start);//傳驅動
