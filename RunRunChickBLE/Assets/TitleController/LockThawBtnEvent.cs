@@ -40,7 +40,7 @@ public class LockThawBtnEvent : MonoBehaviour
                 _TitleController._ChickSaleStatus.SaleMapList[Value] = 1;
                 GlobalValue.MyCoin = GlobalValue.MyCoin - Gold;
                 _TitleController.CoinValueObj.GetComponent<Text>().text = "" + GlobalValue.MyCoin;
-                _TitleController.SetJsonData();
+                _TitleController.SetJsonData_Android();
                 _TitleController.MapLock[Value].gameObject.SetActive(false);
             }
             else if (SaleList == "Parent")
@@ -48,21 +48,21 @@ public class LockThawBtnEvent : MonoBehaviour
                 _TitleController._ChickSaleStatus.SaleParentList[Value] = 1;
                 GlobalValue.MyCoin = GlobalValue.MyCoin - Gold;
                 _TitleController.CoinValueObj.GetComponent<Text>().text = "" + GlobalValue.MyCoin;
-                _TitleController.SetJsonData();
+                _TitleController.SetJsonData_Android();
             }
             else if (SaleList == "Player")
             {
                 _TitleController._ChickSaleStatus.SalePlayerList[Value] = 1;
                 GlobalValue.MyCoin = GlobalValue.MyCoin - Gold;
                 _TitleController.CoinValueObj.GetComponent<Text>().text = "" + GlobalValue.MyCoin;
-                _TitleController.SetJsonData();
+                _TitleController.SetJsonData_Android();
             }
             else if (SaleList == "Chaser")
             {
                 _TitleController._ChickSaleStatus.SaleChasertList[Value] = 1;
                 GlobalValue.MyCoin = GlobalValue.MyCoin - Gold;
                 _TitleController.CoinValueObj.GetComponent<Text>().text = "" + GlobalValue.MyCoin;
-                _TitleController.SetJsonData();
+                _TitleController.SetJsonData_Android();
             }
             Yes_No_BtnObj.SetActive(false);
         }
