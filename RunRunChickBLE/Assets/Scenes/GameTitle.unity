@@ -3436,9 +3436,9 @@ MonoBehaviour:
   _space: 0
   _sampleMode: 0
   subscribers:
-  - {fileID: 487890648}
   - {fileID: 1664922332}
   - {fileID: 412223677}
+  - {fileID: 487890648}
   nodes: []
 --- !u!4 &465740658
 Transform:
@@ -11337,7 +11337,7 @@ Animation:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1090590875}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_Animation: {fileID: 7400000, guid: 58aced3b87b23ce4ead82cc9599dc2ed, type: 2}
   m_Animations:
@@ -44502,7 +44502,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1993505353
 RectTransform:
   m_ObjectHideFlags: 0
